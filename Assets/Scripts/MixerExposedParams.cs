@@ -1,6 +1,6 @@
-﻿public static class MixerExposedParams
+﻿public enum MixerExposedParams
 {
-    public const string MasterVolume = "MasterVolume";
-    public const string MusicVolume = "MusicVolume";
-    public const string UIVolume = "UIVolume";
+    MasterVolume,
+    MusicVolume,
+    UIVolume
 }

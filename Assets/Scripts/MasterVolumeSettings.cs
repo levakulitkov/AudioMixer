@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -5,40 +6,42 @@ using UnityEngine.UI;
 public class MasterVolumeSettings : MonoBehaviour
 {
     [SerializeField] private AudioMixerGroup _audioMixerGroup;
-    [SerializeField] private Slider _volumeSlider;
     [SerializeField] private Button _muteButton;
+    [SerializeField] private List<VolumeSetting> _volumeSettings;
 
     private bool _isMuted;
 
     private void OnEnable()
     {
-        _volumeSlider.onValueChanged.AddListener(ChangeVolume);
         _muteButton.onClick.AddListener(ToggleMute);
+
+        _volumeSettings.ForEach(volume => volume.VolumeChanged += ChangeVolume);
     }
 
     private void OnDisable()
     {
-        _volumeSlider.onValueChanged.RemoveListener(ChangeVolume);
         _muteButton.onClick.RemoveListener(ToggleMute);
+
+        _volumeSettings.ForEach(volume => volume.VolumeChanged -= ChangeVolume);
     }
 
-    private void Start()
+    private void ToggleMute()
     {
-        ChangeVolume(_volumeSlider.value);
-    }
-
-    private void ToggleMute() 
-    {
-        _isMuted = !_isMuted;
-
         if (_isMuted)
-            _audioMixerGroup.audioMixer.SetFloat(
-            MixerExposedParams.MasterVolume, -80);
+        {
+            _isMuted = !_isMuted;
+
+            _volumeSettings.ForEach(volume => volume.UpdateVolume());
+        }
         else
-            ChangeVolume(_volumeSlider.value);
+        {
+            ChangeVolume(MixerExposedParams.MasterVolume, 0);
+
+            _isMuted = !_isMuted;
+        }
     }
 
-    private void ChangeVolume(float sliderValue)
+    private void ChangeVolume(MixerExposedParams param, float sliderValue)
     {
         if (_isMuted)
             return;
@@ -46,7 +49,6 @@ public class MasterVolumeSettings : MonoBehaviour
         float soundLevel = Mathf.Clamp(sliderValue, 0.0001f, 1);
         float volume = Mathf.Log10(soundLevel) * 20;
 
-        _audioMixerGroup.audioMixer.SetFloat(
-            MixerExposedParams.MasterVolume, volume);
+        _audioMixerGroup.audioMixer.SetFloat(param.ToString(), volume);
     }
 }
