@@ -864,9 +864,7 @@ GameObject:
   - component: {fileID: 478378170}
   - component: {fileID: 478378172}
   - component: {fileID: 478378171}
-  - component: {fileID: 478378175}
   - component: {fileID: 478378173}
-  - component: {fileID: 478378174}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -946,40 +944,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 478378169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e85be20e50828054b83861ab05187de7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioMixerGroup: {fileID: -2126734088246137639, guid: 3c7803478558678419f3d6a2df035173, type: 2}
-  _volumeSlider: {fileID: 2123173204}
---- !u!114 &478378174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478378169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1f6ed3a57c732f4cb3df677d65706a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioMixerGroup: {fileID: -6312565756540444689, guid: 3c7803478558678419f3d6a2df035173, type: 2}
-  _volumeSlider: {fileID: 2110313673}
---- !u!114 &478378175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478378169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf314cd83d18ed34ead84972c247999b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioMixerGroup: {fileID: 24300002, guid: 3c7803478558678419f3d6a2df035173, type: 2}
-  _volumeSlider: {fileID: 1169608449}
   _muteButton: {fileID: 855972170}
+  _volumeSettings:
+  - {fileID: 1169608450}
+  - {fileID: 2123173205}
+  - {fileID: 2110313674}
 --- !u!1 &518294439
 GameObject:
   m_ObjectHideFlags: 0
@@ -2481,6 +2454,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1169608448}
   - component: {fileID: 1169608449}
+  - component: {fileID: 1169608450}
   m_Layer: 5
   m_Name: Slider1
   m_TagString: Untagged
@@ -2562,6 +2536,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1169608450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169608447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8f39a85cc7cdc409315b63d0fdb527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mixerExposedParam: 0
+  _volumeSlider: {fileID: 1169608449}
 --- !u!1 &1197546841
 GameObject:
   m_ObjectHideFlags: 0
@@ -3486,6 +3474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2110313672}
   - component: {fileID: 2110313673}
+  - component: {fileID: 2110313674}
   m_Layer: 5
   m_Name: Slider3
   m_TagString: Untagged
@@ -3567,6 +3556,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2110313674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110313671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8f39a85cc7cdc409315b63d0fdb527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mixerExposedParam: 1
+  _volumeSlider: {fileID: 2110313673}
 --- !u!1 &2123173202
 GameObject:
   m_ObjectHideFlags: 0
@@ -3577,6 +3580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2123173203}
   - component: {fileID: 2123173204}
+  - component: {fileID: 2123173205}
   m_Layer: 5
   m_Name: Slider2
   m_TagString: Untagged
@@ -3658,6 +3662,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2123173205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123173202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8f39a85cc7cdc409315b63d0fdb527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mixerExposedParam: 2
+  _volumeSlider: {fileID: 2123173204}
 --- !u!1 &2141041641
 GameObject:
   m_ObjectHideFlags: 0
