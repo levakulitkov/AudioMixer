@@ -7,9 +7,9 @@ public class VolumeSetting : MonoBehaviour
     [SerializeField] private MixerExposedParams _mixerExposedParam;
     [SerializeField] private Slider _volumeSlider;
 
-    public MixerExposedParams MixerExposedParam => _mixerExposedParam;
-
     public event Action<MixerExposedParams, float> VolumeChanged;
+    
+    public MixerExposedParams MixerExposedParam => _mixerExposedParam;
 
     private void OnEnable()
     {
