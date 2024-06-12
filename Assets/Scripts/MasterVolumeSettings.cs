@@ -6,11 +6,8 @@ using UnityEngine.UI;
 public class MasterVolumeSettings : MonoBehaviour
 {
     private const int VolumeMultiplier = 20;
-    private const int MinVolume = -80;
-    private const int LogarifmicBase = 10;
-
-    private static readonly float MinSliderValue = 
-        Mathf.Pow(LogarifmicBase, MinVolume / VolumeMultiplier);
+    private const float MinSliderValue = 1e-4f;
+    private const float MaxSliderValue = 1;
 
     [SerializeField] private AudioMixerGroup _audioMixerGroup;
     [SerializeField] private Button _muteButton;
@@ -53,12 +50,9 @@ public class MasterVolumeSettings : MonoBehaviour
         if (_isMuted)
             return;
 
-        float clampedSliderValue = Mathf.Clamp(sliderValue, MinSliderValue, 1);
-        float volume = TranslateSliderValueToLogarifmicVolumeScale(clampedSliderValue);
+        float clampedSliderValue = Mathf.Clamp(sliderValue, MinSliderValue, MaxSliderValue);
+        float volume = Mathf.Log10(clampedSliderValue) * VolumeMultiplier;
 
         _audioMixerGroup.audioMixer.SetFloat(param.ToString(), volume);
     }
-
-    private static float TranslateSliderValueToLogarifmicVolumeScale(float sliderValue)
-        => Mathf.Log(sliderValue, LogarifmicBase) * VolumeMultiplier;
 }
